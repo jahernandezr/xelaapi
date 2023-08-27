@@ -1,0 +1,117 @@
+﻿@model Xela_api_pariss.Models.NominaApp.Nomina_nominaViewModels;
+@{
+    Layout = "../Shared/_LayoutNuevo2";
+}
+
+<div class="col-xl-12">
+    <div class="card p-4">
+        <div><span style="padding-left:40% "><b>Nuevo Registro</b></span> - <i class="bi bi-person-plus-fill"></i></div>
+        <form class="php-email-form" id="forminsert">
+            <div class="row gy-4">
+
+                <div class="col-md-6">
+                    <select class="form-control" id="Tipo_de_documento" required>
+                        <option value="Cedula de ciudadania">Cedula de ciudadania</option>
+                        <option value="Cedula Extranjeria">Cedula Extanjeria</option>
+                        <option value="Nit">Nit</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 ">
+                    <input type="number" class="form-control" id="Numero_identificacion" placeholder="Numero identificacion" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="Nombre" placeholder="Nombres" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="Apellido" placeholder="Apellidos" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="email" class="form-control" id="Correo_electronico" placeholder="Correo electronico" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="number" class="form-control" id="Telefono" placeholder="Telefono" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="Direccion" placeholder="Direccion" required>
+                </div>
+
+                <div class="col-md-4">
+                    <select class="form-control" id="Sede" required>
+                        <option value="ATEB PRINCIPAL">ATEB PRINCIPAL</option>
+                        <option value="CRUZ BLANCA">CRUZ BLANCA</option>
+                        <option value="CAFESALUD">CAFESALUD</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <select class="form-control" id="Estado" required>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <select class="form-control" id="Cargo" required>
+                        <option selected>Cargos ...</option>
+                        <option value="AUXILIAR">AUXILIAR</option>
+                        <option value="TECNICO">TECNICO</option>
+                        <option value="TECNICO I">TECNICO I</option>
+                        <option value="TECNICO II">TECNICO II</option>
+                        <option value="PROFESIONAL">PROFESIONAL</option>
+                        <option value="PROFESIONAL I">PROFESIONAL I</option>
+                        <option value="PROFESIONAL II">PROFESIONAL II</option>
+                        <option value="PROFESIONAL ESPECIALIZADO">PROFESIONAL ESPECIALIZADO</option>
+                        <option value="PROFESIONAL ESPECIALIZADO I">PROFESIONAL ESPECIALIZADO I</option>
+                        <option value="PROFESIONAL MASTER">PROFESIONAL MASTER</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <input type="number" class="form-control" id="ValorSueldo" placeholder="ValorSueldo" required>
+                </div>
+
+                <div class="col-md-6">
+                    <select class="form-control" id="Informacion_completa" required>
+                        <option selected>Informacion completa ...</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <select class="form-control" id="Liquidado" required>
+                        <option selected>Liquidado ...</option>
+                        <option value="Si">Si</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" id="SedeSecundaria" required>
+                        <option selected>SedeSecundaria</option>
+                        <option value="ATEB">ATEB</option>
+                        <option value="PYP">PYP</option>
+                        <option value="RAMOS">RAMOS</option>
+                        <option value="PARISS">PARISS</option>
+                        <option value="PARCAPRECOM">PARCAPRECOM</option>
+                        <option value="SALUDVIDA">SALUDVIDA</option>
+                        <option value="GESTION DOCUMENTAL SEGURA">GESTION DOCUMENTAL SEGURA</option>
+                    </select>
+                </div>
+                <div class="col-md-9">
+                    <textarea class="form-control" id="Observaciones" required>Observaciones
+                    </textarea>
+                </div>
+                <button type="Button" class="btn btn-success btnregistrarNuevNom">Registrar</button>
+
+            </div>
+        </form>
+    </div>
+
+</div>
+

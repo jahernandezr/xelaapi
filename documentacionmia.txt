@@ -1,0 +1,10 @@
+para trabajar con git
+primero lo incializo
+
+git init
+
+despues  una sola vez creo el archivo gitignore
+
+dotnet new gitignore
+
+

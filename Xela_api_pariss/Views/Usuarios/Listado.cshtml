@@ -1,0 +1,106 @@
+﻿@using Xela_api_pariss.Servicios;
+@model UsuariosListViewModel
+@{
+    Layout = "../Shared/_Layout";
+}
+
+@if (Model.Mensaje is not null)
+{
+    <div class="alert alert-success"  role="alert">
+        @Model.Mensaje
+    </div>
+}
+@if(Model.Usuarios is not null)
+{
+    <form method="post">
+        <table class=" table table-hover">
+            <thead>
+                <tr>
+                    <td>Accion</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var usuario in Model.Usuarios)
+                {
+                    <tr>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Crear perfil
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                   
+                                        @if (User.IsInRole(Constantes.RolAdmin))
+                                        {
+                                        <li>
+                                              <a asp-action="HacerAdmin"
+                                              asp-route-email="@usuario.Email">Administrador</a>
+                                        </li>
+                                        }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerConsulta1"
+                                   asp-route-email="@usuario.Email">Pariss Consulta 1</a>
+                                        </li>
+                                    }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerConsulta2"
+                                   asp-route-email="@usuario.Email">Pariss Consulta 2</a>
+                                        </li>
+                                    }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerAdminpariss"
+                                   asp-route-email="@usuario.Email">Admin ParIss</a>
+                                        </li>
+                                    }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminSaludV))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerAdminSaludvida"
+                                   asp-route-email="@usuario.Email">Admin SaludVida</a>
+                                        </li>
+                                    }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminSaludV))
+                                        {
+                                            <li>
+                                                <a asp-action="HacerConsulta1saludvida"
+                                   asp-route-email="@usuario.Email">Saludvida Consulta1 </a>
+                                            </li>
+                                        }
+                                    @if (User.IsInRole(Constantes.RolAdmin))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerConsultaCYS"
+                                   asp-route-email="@usuario.Email">Consulta SYC </a>
+                                        </li>
+                                    }
+                                    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolNomina))
+                                    {
+                                        <li>
+                                            <a asp-action="HacerAdminNomina"
+                                   asp-route-email="@usuario.Email">Admin Nomina </a>
+                                        </li>
+                                    }
+
+
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-outline-dark btn-sm" id="btnactualizar">Aplicar</button>
+                       </td>
+                        <td>@usuario.Email
+                            @Html.AntiForgeryToken()
+                        </td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+
+    </form>
+}

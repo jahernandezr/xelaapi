@@ -1,0 +1,45 @@
+﻿@model Xela_api_pariss.Models.NominaApp.Nomina_nominaViewModels;
+@{
+    Layout = "../Shared/_LayoutNuevo2";
+}
+<input type="text" id="inputmodulos" value="Nomina" style="display:none" />
+<div><span style="padding-left:40% "><b>Usuarios General</b></span><a asp-action="ExcellistaNominaTotal" asp-controller="Nomina"><i class="bi bi-file-earmark-excel-fill float-end ri-2x"></i></a></div>
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div id="divsalidasNominas">
+        <div class="col-md-12 col-sm-2 divmostrartablasnomina">
+            <table id="example" class="table table-responsive-lg" style="width:100%">
+                <thead class="">
+                    <tr>
+                        <td><b>Id</b></td>
+                        <td><b>Nombre</b></td>
+                        <td><b>Apellido</b></td>
+                        <td><b>Cargo</b></td>
+                        <td><b>Sede</b></td>
+                        <td><b>Accion</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var da in Model.Nomina)
+                    {
+                        <tr>
+                            <td>@da.Id</td>
+                            <td>@da.Nombre</td>
+                            <td>@da.Apellido</td>
+                            <td>@da.Cargo</td>
+                            <td>@da.Sede</td>
+                            <td>
+                                <div class="icon" style="padding-left: 20%">
+                                    <button type="button" class="btn btn-secundary btntraeinfNomina" data-bs-toggle="modal" data-bs-target="#fullscreenModal">
+                                        <i class="bi bi-plus-circle-dotted"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+

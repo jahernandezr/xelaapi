@@ -1,0 +1,88 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.tituloanimado {
+    color: hsl(0, 0%, 0%);
+    font: normal 25px Varela Round, sans-serif;
+    height: 1px;
+    left: 0;
+    letter-spacing: 1px;    
+    margin: -40px 0 0 0;
+    position: absolute;
+    text-align: left;
+    text-transform: uppercase;
+    /*top: 50%;*/
+    /*width: 100%;*/
+    animation: move linear 4000ms infinite;
+}
+
+@keyframes move {
+    0% {
+        text-shadow: 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1);
+    }
+
+    25% {
+        text-shadow: -1px -1px 0 hsla(180, 100%, 50%, 1), -1px -1px 0 hsla(180, 100%, 50%, 1), -1px -1px 0 hsla(180, 100%, 50%, 1), -1px -1px 0 hsla(180, 100%, 50%, 1), 1px 1px 0 hsla(0, 100%, 50%, 1), 1px 1px 0 hsla(0, 100%, 50%, 1), 1px 1px 0 hsla(0, 100%, 50%, 1), 1px 1px 0 hsla(0, 100%, 50%, 1);
+    }
+
+    50% {
+        text-shadow: -1px 1px 0 hsla(0, 100%, 50%, 1), -1px 1px 0 hsla(0, 100%, 50%, 1), -1px 1px 0 hsla(0, 100%, 50%, 1), -1px 1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(180, 100%, 50%, 1), 1px -1px 0 hsla(180, 100%, 50%, 1), 1px -1px 0 hsla(180, 100%, 50%, 1), 1px -1px 0 hsla(180, 100%, 50%, 1);
+    }
+
+    75% {
+        text-shadow: 1px 1px 0 hsla(180, 100%, 50%, 1), 1px 1px 0 hsla(180, 100%, 50%, 1), 1px 1px 0 hsla(180, 100%, 50%, 1), 1px 1px 0 hsla(180, 100%, 50%, 1), -1px -1px 0 hsla(0, 100%, 50%, 1), -1px -1px 0 hsla(0, 100%, 50%, 1), -1px -1px 0 hsla(0, 100%, 50%, 1), -1px -1px 0 hsla(0, 100%, 50%, 1);
+    }
+
+    100% {
+        text-shadow: 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), 1px -1px 0 hsla(0, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1), -1px 1px 0 hsla(180, 100%, 50%, 1);
+    }
+}
+
+.cuerporec {
+animation:both;
+opacity:0.5;
+}
+
+.btnInicioIndex {
+    border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    border: 3px solid #000000;
+    -webkit-box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 15px 3px rgba(0,0,0,0.75);
+    display: flex;
+    justify-content: center;
+    filter: grayscale(80%)
+
+}
+
+.imgcard {
+    background-image: url(../imagenes/fomdocard.jpg);
+    height: 170px;
+    width: 100%;
+    overflow: hidden;
+}
+    .imgcard:hover {
+        filter: opacity(.5);
+    }

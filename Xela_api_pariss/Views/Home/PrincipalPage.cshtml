@@ -1,0 +1,78 @@
+﻿@using Xela_api_pariss.Servicios;
+@{
+    Layout = "../Shared/_LayoutNuevo3";
+}
+@{
+    ViewData["Title"] = "PrincipalPage";
+}
+@Html.AntiForgeryToken()
+@*<div class="row">
+    <div class="col-sm-4">
+        <div class="">
+            <div class="card-body">
+                @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolAdminSaludV))
+                {
+                    <a asp-action="Listado" asp-controller="Usuarios" class="text-lg-center fs-6 btn text-white  imgcard btnInicioIndex" style="padding-top:37%">Listado de Usuarios</a>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="">
+            <div class="card-body">
+                @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolAdminSaludV))
+                {
+                    <a asp-action="Index" asp-controller="Home" class="text-lg-center fs-6 btn text-white  imgcard btnInicioIndex" style="padding-top:37%">Correspondencia</a>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="">
+            <div class="card-body">
+                @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolAdminSaludV))
+                {
+                    <a asp-action="Index" asp-controller="Vwimagenes" class="text-lg-center fs-6 btn text-white  imgcard btnInicioIndex" style="padding-top:37%">Modulo de Imagenes Sv</a>
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="">
+            <div class="card-body">
+                @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolAdminSaludV))
+                {
+                    <a asp-action="Index" asp-controller="CafesaludSYC" class="text-lg-center fs-6 btn text-white  imgcard btnInicioIndex" style="padding-top:37%">Modulo de Imagenes Syc</a>
+                }
+
+            </div>
+        </div>
+    </div>
+
+   <div class="col-sm-4">
+        <div class="">
+            <div class="card-body">
+                @if (User.IsInRole(Constantes.RolAdmin))
+                {
+         <a asp-action="Index" asp-controller="Proyectos" class="text-lg-center fs-6 btn text-white  imgcard btnInicioIndex" style="padding-top:37%">Proyectos</a>
+                }
+            </div>
+        </div>
+    </div>
+ </div>
+*@
+ @if (User.IsInRole(Constantes.RolAdmin) ||User.IsInRole(Constantes.RolNomina))
+{
+    <h6 style="padding-left:30%"><b>Usuarios Activos</b></h6>
+<div id="barChart" style="max-height: 350px; padding-left:20%"></div>
+        }
+<!-- Bar Chart -->
+@*<canvas id="barChart" style="max-height: 400px;"></canvas>
+*@<!-- End Bar CHart -->

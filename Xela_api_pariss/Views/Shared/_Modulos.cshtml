@@ -1,0 +1,40 @@
+﻿@using Xela_api_pariss.Servicios;
+
+<ul class="navbar-nav flex-grow-1">
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolAdminSaludV))
+        {
+            <a asp-action="Listado" asp-controller="Usuarios" class="btn btn-light col-sm-12"><b>Listado de Usuarios</b></a>
+        }
+    </li>
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss) || User.IsInRole(Constantes.RolConsulta1) || User.IsInRole(Constantes.RolConsulta2))
+        {
+            <a asp-action="Index" asp-controller="Home" class="btn btn-light col-sm-12"><b>Correspondencia</b></a>
+        }
+    </li>
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminSaludV) || User.IsInRole(Constantes.RolAdminSaludVconsulta1))
+        {
+            <a asp-action="Index" asp-controller="Vwimagenes" class="btn btn-light col-sm-12"><b>Modulo de Imagenes Sv</b></a>
+        }
+    </li>
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolConsultaImgSYC) || User.IsInRole(Constantes.RolAdmin))
+        {
+            <a asp-action="Index" asp-controller="CafesaludSYC" class="btn btn-light col-sm-12"><b>Modulo de Imagenes Syc</b></a>
+        }
+    </li>
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolConsultaImgSYC) || User.IsInRole(Constantes.RolAdmin))
+        {
+            <a asp-action="Index" asp-controller="Proyectos" class="btn btn-light col-sm-12"><b>Proyectos</b></a>
+        }
+    </li>
+    <li class="nav-item">
+        @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolNomina))
+        {
+            <a asp-action="Index" asp-controller="Nomina" class="btn btn-light col-sm-12"><b>Nomina</b></a>
+        }
+    </li>
+</ul>

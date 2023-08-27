@@ -1,0 +1,218 @@
+﻿@using Xela_api_pariss.Servicios;
+
+<div class="card text-center">
+    @if (User.IsInRole(Constantes.RolAdmin) || User.IsInRole(Constantes.RolAdminpariss))
+    {
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active  btn-outline-dark" id="aSolicitudes" aria-current="true" href="#">Solicitudes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active  btn-outline-dark" id="aResponsables" href="#">Responsables</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active btn-outline-dark" href="#" id="aReportes" tabindex="-1" aria-disabled="true">Reportes</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="card-body">
+        <div class="row" id="divsasolicitud">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        
+                            <div id="divsalidaestsolicit">
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    @Html.AntiForgeryToken()
+                                        <input type="number" class="form-control" id="IdPreradicado" name="IdPreradicado" placeholder="Nro Preradicado" value="">
+                                        <label for="IdPreradicado">Nro Preradicado</label>
+                                </div>
+                            </div>
+                            <div class="col-md" style="">
+                                <button class="btn btn-dark btn-lg" type="button" id="btnIdPreradicado">Modificar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="row" id="divsalidresponsable" style="display:none">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div id="divsalidaestrespuesta">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        @Html.AntiForgeryToken()
+                                        <input type="number" class="form-control" id="IdPreradicados" name="IdPreradicados" placeholder="Nro Solicitud" value="">
+                                        <label for="IdPreradicados">Nro Solicitud</label>
+                                    </div>
+                                </div>
+                                <div class="col-md" style="">
+                                    <button class="btn btn-dark btn-lg" id="btnExeSp_updateEstResponsable" type="button">Modificar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="divsalidreportes" style="display:none">
+                <div class="col-sm-12" >
+                    <h6> Reporte 1</h6>
+                    <div class="card" style="background: #E5E8E8">
+                        <div class="card-body">
+                            <form asp-action="Exportdestinatarios" asp-controller="Excelcorrespondencia">
+                                <div  asp-validation-summary="ModelOnly"></div>
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="idDestinatario" name="idDestinatario" placeholder="Id destinario" value="">
+                                            <label for="idDestinatario">Id destinatario</label>
+                                    </div>
+                                </div>
+                                <div class="col-md" style="">
+                                        <button class="btn btn-outline-success btn-lg" id="btnIddestinatario">
+                                       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+                                            <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
+                                            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                        </svg> Oficios destinatarios
+                                    </button>
+                                </div>
+                            </div>
+                           </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <h6>Reporte 2</h6>
+                    <div class="card" style="background: #E5E8E8">
+                        <div class="card-body">
+                            <div id="">
+                                <div class="form-floating">
+                                    <form asp-action="ExcelSp_solicitudesParametro" asp-controller="Excelcorrespondencia" method="post">
+                                        <div asp-validation-summary="ModelOnly"></div>
+                                        <div class="row g-2">
+                                            <div class="col-md">
+                                                <div class="form-floating flotid_usuario_asignado">
+                                                    <input type ="text" class="form-control" id="id_usuario_asignado2" name="id_usuario_asignado2" placeholder="Id usuario asignado" value="">
+                                                    <label for="id_usuario_asignado2">usuario</label>
+                                                </div>
+                                                <div class="form-floating flotid_usuario_asignado2"></div>
+                                                <div class="row g-2">
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <select class="form-select" id="fh_asignacio" name="fh_asignacio" aria-label="Año">
+                                                                <option selected>Seleccione - Año </option>
+                                                                <option value="2024">2024</option>
+                                                                <option value="2023">2023</option>
+                                                                <option value="2022">2022</option>
+                                                                <option value="2021">2021</option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2019">2019</option>
+                                                                <option value="2018">2018</option>
+                                                                <option value="2017">2017</option>
+                                                                <option value="2016">2016</option>
+                                                                <option value="2015">2015</option>
+                                                                <option value="2014">2014</option>
+                                                                <option value="2013">2013</option>
+                                                                <option value="2012">2012</option>
+                                                                <option value="2011">2011</option>
+                                                                <option value="2010">2010</option>
+                                                                <option value="2009">2009</option>
+                                                                <option value="2008">2008</option>
+                                                                <option value="2007">2007</option>
+                                                                <option value="2006">2006</option>
+                                                                <option value="2005">2005</option>
+                                                                <option value="2004">2004</option>
+                                                                <option value="2003">2003</option>
+                                                                <option value="2002">2002</option>
+                                                                <option value="2001">2001</option>
+                                                                <option value="2000">2000</option>
+                                                                <option value="1999">1999</option>
+                                                            </select>
+                                                            <label for="a">Año</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md">
+                                                        <div class="form-floating">
+                                                            <select class="form-select" id="fh_asignacion" name="fh_asignacion" aria-label="Mes">
+                                                                <option selected>Seleccione - Mes</option>
+                                                                <option value="1">Enero</option>
+                                                                <option value="2">Febrero</option>
+                                                                <option value="3">Marzo</option>
+                                                                <option value="4">Abril</option>
+                                                                <option value="5">Mayo</option>
+                                                                <option value="6">Junio</option>
+                                                                <option value="7">Julio</option>
+                                                                <option value="8">Agosto</option>
+                                                                <option value="9">Septiembre</option>
+                                                                <option value="10">Octubre</option>
+                                                                <option value="11">Noviembre</option>
+                                                                <option value="12">Diciembre</option>
+                                                            </select>
+                                                            <label for="m">Mes</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md" style="">
+                                                <button class="btn btn-outline-success btn-lg" style="padding:2%">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" fill="currentColor" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+                                                        <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
+                                                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                                    </svg> Solicitud por Periodo y usuarios
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <h6>Reporte 3</h6>
+                    <div class="row">
+
+                        <div class="col-sm-2 col-md-12">
+                            <form asp-controller="Excelcorrespondencia" asp-action="Excellistaterceros" style="padding-top:2%" method="get">
+                                <div asp-validation-summary="ModelOnly"></div>
+                                <button class="btn btn-outline-success btn-lg col-sm-2 col-md-12">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-file-earmark-excel" viewBox="0 0 16 16">
+                                        <path d="M5.884 6.68a.5.5 0 1 0-.768.64L7.349 10l-2.233 2.68a.5.5 0 0 0 .768.64L8 10.781l2.116 2.54a.5.5 0 0 0 .768-.641L8.651 10l2.233-2.68a.5.5 0 0 0-.768-.64L8 9.219l-2.116-2.54z" />
+                                        <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z" />
+                                    </svg> Listado de Terceros
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    }
+</div>
